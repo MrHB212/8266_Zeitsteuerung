@@ -7,7 +7,7 @@ void setup() {
   //LED Kontrolleuchte
   pinMode(5, OUTPUT);
   digitalWrite(5, HIGH);
-  
+
   //Wlan Einstellungen
   const char* ssid ="KabelBox-2BF8";
   const char* pw ="82644147";
