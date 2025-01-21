@@ -10,41 +10,74 @@ Beispiel: 12:30 ---> 1230. <br>
 0000 in beiden Feldern bedeutet permanent aus <br>
 </p> <br><br><br>
 
-<!-- Hie kommen die einzelnen Textboxen -->
-<label for="montag1">Montag an:</label>
-<input type="number" id="montag1" name="montag1" value=0000>
-<label for="montag2">Montag aus:</label>
-<input type="number" id="montag2" name="montag2" value=0000> <br> <br>
+<!-- Hier kommen die einzelnen Textboxen -->
+<label for="a1">Montag an:</label>
+<input type="number" id="a1" name="montag1" value=0000>
+<label for="a2">Montag aus:</label>
+<input type="number" id="a2" name="montag2" value=0000> <br> <br>
 
-<label for="dienstag1">Dienstag an:</label>
-<input type="number" id="dienstag1" name="dienstag1" value=0000>
-<label for="dienstag2">Dienstag aus:</label>
-<input type="number" id="dienstag2" name="dienstag2" value=0000> <br> <br>
+<label for="a3">Dienstag an:</label>
+<input type="number" id="a3" name="dienstag1" value=0000>
+<label for="a4">Dienstag aus:</label>
+<input type="number" id="a4" name="dienstag2" value=0000> <br> <br>
 
-<label for="mittwoch1">Mittwoch an:</label>
-<input type="number" id="mittwoch1" name="mittwoch1" value=0000>
-<label for="mittwoch2">Mittwoch aus:</label>
-<input type="number" id="mittwoch2" name="mittwoch2" value=0000> <br> <br>
+<label for="a5">Mittwoch an:</label>
+<input type="number" id="a5" name="mittwoch1" value=0000>
+<label for="a6">Mittwoch aus:</label>
+<input type="number" id="a6" name="mittwoch2" value=0000> <br> <br>
 
-<label for="donnerstag1">Donnerstag an:</label>
-<input type="number" id="donnerstag1" name="donnerstag1" value=0000>
-<label for="donnerstag2">Donnerstag aus:</label>
-<input type="number" id="donnerstag2" name="donnerstag2" value=0000> <br> <br>
+<label for="a7">Donnerstag an:</label>
+<input type="number" id="a7" name="donnerstag1" value=0000>
+<label for="a8">Donnerstag aus:</label>
+<input type="number" id="a8" name="donnerstag2" value=0000> <br> <br>
 
-<label for="freitag1">Freitag an:</label>
-<input type="number" id="freitag1" name="freitag1" value=0000>
-<label for="freitag2">Freitag aus:</label>
-<input type="number" id="freitag2" name="freitag2" value=0000> <br> <br>
+<label for="a9">Freitag an:</label>
+<input type="number" id="a9" name="freitag1" value=0000>
+<label for="a10">Freitag aus:</label>
+<input type="number" id="a10" name="freitag2" value=0000> <br> <br>
 
-<label for="samstag1">Samstag an:</label>
-<input type="number" id="samstag1" name="samstag1" value=0000>
-<label for="samstag2">Samstag aus:</label>
-<input type="number" id="samstag2" name="samstag2" value=0000> <br> <br>
+<label for="a11">Samstag an:</label>
+<input type="number" id="a11" name="samstag1" value=0000>
+<label for="a12">Samstag aus:</label>
+<input type="number" id="a12" name="samstag2" value=0000> <br> <br>
 
-<label for="sonntag1">Sonntag an:</label>
-<input type="number" id="sonntag1" name="sonntag1" value=0000>
-<label for="sonntag2">Sonntag aus:</label>
-<input type="number" id="sonntag2" name="sonntag2" value=0000> <br> <br>
+<label for="a13">Sonntag an:</label>
+<input type="number" id="a13" name="sonntag1" value=0000>
+<label for="a14">Sonntag aus:</label>
+<input type="number" id="a14" name="sonntag2" value=0000> <br> <br>
+
+<button onclick="showJson()">Zeige JSON</button>
+<pre style="color: red; font-weight: bold"; id="fehler"></pre>
+<pre id="json"></pre>
+
+
+
+
+<script>
+    //Diese Funktion erstellt die JSON und zeigt sie an
+    function showJson() {
+        let uhrzeiten = ''
+        //Loop um die Uhrzeiten zusammenzufügen
+        for (let i = 1; i <= 14; i++) {
+            const nummer = document.getElementById("a" + i).value;
+                uhrzeiten += nummer;
+            }
+
+        if(uhrzeiten.length == 56) {
+            const json = JSON.stringify(uhrzeiten);
+            document.getElementById("json").textContent = json;
+            fetch('http://192.168.0.120/input', {method: 'POST', body: uhrzeiten});
+        }else{
+            const json = JSON.stringify(uhrzeiten);
+            document.getElementById("json").textContent = json;
+            document.getElementById("fehler").textContent = "Zahlenfolge zu lang oder zu kurz";
+        }
+    }
+
+
+
+
+</script>
 </body>
 
 </html>
