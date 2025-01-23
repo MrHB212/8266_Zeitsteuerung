@@ -1,7 +1,4 @@
-# 8266-Zeitautomatik
+# 8266-Konfiguration über HTML
 
-ESP8266
-Das Projekt dient zur Übung für GitHub.
-Mit einem ESP8266 sollen Zeiten zu jedem Tag festgelegt werden.
-Zu diesen Zeiten wird dann etwas angeschaltet. In diesem
-Beispiel eine LED.
+
+Ein Projekt mit dem Ziel einem ESP8266 über eine HTML-Datei Anweisungen und Daten zu schicken. es wird angenommen, dass das ESP sich im gleichen Netzwerk befindet.
