@@ -12,45 +12,48 @@ IPAddress gateway(192,168,0,1);
 IPAddress subnet(255,255,255,0);
 const char* ssid ="KabelBox-2BF8";
 const char* pw ="82644147";
-long long number = 99;
-
+String input = "";
 
 
 //Empfange die Datei
 void handleInput(){
-  DynamicJsonDocument doc(76);
-  number = doc.as<long long>();
-  if(number == 99){
-    server.send(400, "text/plain", "FEHLER");
-  }else{
-    server.send(200, "text/plain", "OK");
-  }
+  /*if (server.hasArg("plain")) {
+    String body = server.arg("plain");
+    input = server.arg("plain");
+    Serial.println("JSON Vorgang wurde ausgeführt.");
+    Serial.println(input);*/
+    server.send(200);
+    Serial.println("Anfrage angekommen");
+  //}
+  digitalWrite(5, LOW);
 }
 
 
 void setup() {
+Serial.begin(9600);
 //LED Kontrolleuchte
 pinMode(5, OUTPUT);
 digitalWrite(5, HIGH);
 
 //mit WLAN verbinden
 WiFi.begin(ssid,pw);
-  if(WiFi.status() == WL_CONNECTED && WiFi.config(local_ip, gateway, subnet)){
-    digitalWrite(5, LOW);
+while(WiFi.status() != WL_CONNECTED){
+  Serial.println("Warte auf WLAN");
+  delay(1000);
   }
-  //Starte Server
-  server.begin();
+  Serial.println(WiFi.localIP());
+  digitalWrite(5, LOW);
+  delay(2000);
+
+//Starte Server
+server.on("/comms", HTTP_POST, handleInput);
+delay(2000);
+server.begin();
+Serial.println("Server gestartet");
 }
 
 void loop() {
-  server.on("/input", HTTP_POST, handleInput);
-  if(number==99){
-    digitalWrite(5, HIGH);
-  }else{
-    digitalWrite(5,LOW);
-  }
-  
-  
+  server.handleClient();
 }
   
 
