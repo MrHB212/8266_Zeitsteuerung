@@ -17,23 +17,20 @@ String input = "";
 
 //Empfange die Datei
 void handleInput(){
-  /*if (server.hasArg("plain")) {
     String body = server.arg("plain");
     input = server.arg("plain");
     Serial.println("JSON Vorgang wurde ausgeführt.");
-    Serial.println(input);*/
+    Serial.println(input);
     server.send(200);
     Serial.println("Anfrage angekommen");
-  //}
-  digitalWrite(5, LOW);
 }
 
 
 void setup() {
 Serial.begin(9600);
 //LED Kontrolleuchte
-pinMode(5, OUTPUT);
-digitalWrite(5, HIGH);
+//pinMode(5, OUTPUT);
+//digitalWrite(5, HIGH);
 
 //mit WLAN verbinden
 WiFi.begin(ssid,pw);
@@ -54,6 +51,7 @@ Serial.println("Server gestartet");
 
 void loop() {
   server.handleClient();
+  
 }
   
 
