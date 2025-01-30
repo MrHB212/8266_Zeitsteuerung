@@ -1,7 +1,6 @@
-# 8266-Konfiguration über HTML (POST-GET)
+# 8266-Zeitsteuerung
 
 
-Ein Projekt mit dem Ziel einem ESP8266 über eine HTML-Datei Anweisungen und Daten zu schicken. Es wird angenommen, dass das ESP sich im gleichen Netzwerk befindet.
-
-Update1: Da es mit Python anscheinend einfacher und reibungsloser ist wechsel ich auf Python.
+Ein Projekt mit dem Ziel einem ESP8266 eine Nummernfolge zu schicken um eine einstellbare Zeitsteuerung zu ermöglichen.
+Es sollen pro Wochentag Ein- und Ausschaltzeiten übergeben werden. Das ESP8266 soll dementsprechend etwas steuern.
 
