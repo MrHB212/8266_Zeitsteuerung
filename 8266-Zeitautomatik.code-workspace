@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "ESP8266_Zeitsteuerung",
+			"path": "ESP8266_Zeitsteuerung"
+		}
+	],
+	"settings": {}
+}
